@@ -3,8 +3,10 @@ const mongoose = require('../db/connection')
 
 
 const BoxerSchema = new mongoose.Schema({
-    name: String,
+    firstName: String,
+    lastName: String,
     class: String,
+    
     gloves: [
         {
             ref: 'Gloves',

@@ -10,8 +10,33 @@ router.get('/', async(req,res) => {
         data: allGloves
     })
 })
+
+router.get("/:brand", (req, res) => {
+    Glove.find({ brand: req.params.brand }).then((gloves) => {
+      res.json(gloves);
+    });
+  });
+
+  router.get("/size/:size", (req, res) => {
+    Glove.find({ size: req.params.size }).then((gloves) => {
+      res.json(gloves);
+    });
+  });
+
 router.post("/", async (req, res) => {
     res.json(await Glove.create(req.body));
+  });
+
+  router.put("/:id", (req, res) => {
+    Glove.findByIdAndUpdate(req.params.id, req.body).then((glove) => {
+      res.json(glove);
+    });
+  });
+
+  router.delete("/:brand", (req, res) => {
+    Glove.deleteOne({ brand: req.params.brand }).then((glove) => {
+      res.json(glove);
+    });
   });
 
 
