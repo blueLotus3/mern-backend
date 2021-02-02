@@ -10,6 +10,9 @@ router.get('/', async(req,res) => {
         data: allGloves
     })
 })
+router.post("/", async (req, res) => {
+    res.json(await Glove.create(req.body));
+  });
 
 
 module.exports = router
