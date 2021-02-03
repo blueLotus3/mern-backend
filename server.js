@@ -20,16 +20,16 @@ NODE_ENV === "production" ? app.use(cors(corsOptions)) : app.use(cors());
 
 
 //Route for testing server is working
-app.get("/", (req, res) => {
-    res.json({ hello: "Hello World!" });
-  });
+// app.get("/", (req, res) => {
+//     res.json({ hello: "Hello World!" });
+//   });
 
 
-// const gloveRouter = require('./controllers/glove')
-// app.use('/gloves/', gloveRouter)
+const gloveRouter = require('./controllers/glove')
+app.use('/gloves/', gloveRouter)
 
-// const boxerRouter = require('./controllers/boxer')
-// app.use('/boxers/', boxerRouter)
+const boxerRouter = require('./controllers/boxer')
+app.use('/boxers/', boxerRouter)
 
 
 app.listen(PORT, () => {
