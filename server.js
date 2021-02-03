@@ -5,6 +5,9 @@ const express = require('express')
 const logger = require('morgan')
 const app = express()
 
+const {PORT = 3000, NODE_ENV = "development"} = process.env
+
+NODE_ENV === "production" ? app.use(cors(corsOptions)) : app.use(cors());
 app.use(logger('dev'))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
@@ -19,4 +22,6 @@ const boxerRouter = require('./controllers/boxer')
 app.use('/boxers/', boxerRouter)
 
 
-app.listen(3000, () => console.log('Server running on port 3000'))
+app.listen(PORT, () => {
+    console.log(`Your are listening on port ${PORT}`);
+  });
