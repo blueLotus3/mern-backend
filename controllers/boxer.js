@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const Boxer = require("../models/Boxer")
 const Glove = require("../models/Glove") 
+const mongoose = require("../db/connection")
+const db = mongoose.connection
 
 
 router.get('/', async(req, res) => {

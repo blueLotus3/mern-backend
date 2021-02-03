@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Glove = require("../models/Glove") 
-
+const mongoose = require("../db/connection")
+const db = mongoose.connection
 
 router.get('/', async(req,res) => {
     const allGloves = await Glove.find({})
